@@ -14,78 +14,38 @@
 //! After creating the four variables mentioned above, uncomment the following lines
 //* This way you can export them to the test file, this is essential for the tests to work
 
+//! Temperature data provided for 30 days
+const temperaturesF = [32, 70, 80, 72, 68, 75, 82, 65, 77, 78, 73, 79, 71, 74, 76]; /* Fahrenheit readings */
+const temperaturesC = [25, 18, 15, 28, 20, 23, 30, 22, 26, 24, 21, 27, 19, 17, 29]; // Celsius readings
+
+// Helper functions to convert temperatures
+const celsiusToFahrenheit = c => (c * 9 / 5) + 32;
+const fahrenheitToCelsius = f => (f - 32) * 5 / 9;
+
+// Convert all Celsius days to Fahrenheit for total in Fahrenheit
+const temperaturesCtoF = temperaturesC.map(celsiusToFahrenheit);
+
+// Convert all Fahrenheit days to Celsius for total in Celsius
+const temperaturesFtoC = temperaturesF.map(fahrenheitToCelsius);
+
+// Calculate total temperatures in both C and F
+const tot_temperature_in_fahrenheit = temperaturesF.reduce((a, b) => a + b, 0) + temperaturesCtoF.reduce((a, b) => a + b, 0);
+const tot_temperature_in_celsius = temperaturesC.reduce((a, b) => a + b, 0) + temperaturesFtoC.reduce((a, b) => a + b, 0);
+
+// Calculate average temperatures in similar unit values
+const avg_temperature_in_fahrenheit = tot_temperature_in_fahrenheit / 30;
+const avg_temperature_in_celsius = tot_temperature_in_celsius / 30;
+
+// Then Export the variables for testing
 module.exports = {
-    // tot_temperature_in_fahrenheit,
-    // tot_temperature_in_celsius,
-    // avg_temperature_in_fahrenheit,
-    // avg_temperature_in_celsius
-};
-const day1TempF = 32
-const day2TempC = 25
-const day3TempF = 70
-const day4TempC = 18
-const day5TempF = 80
-const day6TempC = 15
-const day7TempF = 72
-const day8TempC = 28
-const day9TempF = 68
-const day10TempC = 20
-const day11TempF = 75
-const day12TempC = 23
-const day13TempF = 82
-const day14TempC = 30
-const day15TempF = 65
-const day16TempC = 22
-const day17TempF = 77
-const day18TempC = 26
-const day19TempF = 78
-const day20TempC = 24
-const day21TempF = 73
-const day22TempC = 21
-const day23TempF = 79
-const day24TempC = 27
-const day25TempF = 71
-const day26TempC = 19
-const day27TempF = 74
-const day28TempC = 17
-const day29TempF = 76
-const day30TempC = 29
-
-//Formula to pass from F to C: (tempInFahrenheit - 32) * 5 / 9
-//Formula to pass from C to F: (tempInCelsius * 9 / 5) + 32
-
-const day2TempF = (day2TempC * 9 / 5) + 32
-const day4TempF = (day4TempC * 9 / 5) + 32
-const day6TempF = (day6TempC * 9 / 5) + 32
-const day8TempF = (day8TempC * 9 / 5) + 32
-const day10TempF = (day10TempC * 9 / 5) + 32
-const day12TempF = (day12TempC * 9 / 5) + 32
-const day14TempF = (day14TempC * 9 / 5) + 32
-const day16TempF = (day16TempC * 9 / 5) + 32
-const day18TempF = (day18TempC * 9 / 5) + 32
-const day20TempF = (day20TempC * 9 / 5) + 32
-const day22TempF = (day22TempC * 9 / 5) + 32
-const day24TempF = (day24TempC * 9 / 5) + 32
-const day26TempF = (day26TempC * 9 / 5) + 32
-const day28TempF = (day28TempC * 9 / 5) + 32
-const day30TempF = (day30TempC * 9 / 5) + 32
-
-const tot_temperature_in_fahrenheit = day1TempF + day2TempF + day3TempF + day4TempF + day5TempF + day6TempF + day7TempF + day8TempF + day9TempF + day10TempF + day11TempF + day12TempF + day13TempF + day14TempF + day15TempF + day16TempF + day17TempF + day18TempF + day19TempF + day20TempF + day21TempF + day22TempF + day23TempF + day24TempF + day25TempF + day26TempF + day27TempF + day28TempF + day29TempF + day30TempF
-
-const tot_temperature_in_celsius = ((day1TempF - 32) * 5 / 9) + day2TempC + ((day3TempF - 32) * 5 / 9) + day4TempC + ((day5TempF - 32) * 5 / 9) + day6TempC + ((day7TempF - 32) * 5 / 9) + day8TempC + ((day9TempF - 32) * 5 / 9) + day10TempC + ((day11TempF - 32) * 5 / 9) + day12TempC + ((day13TempF - 32) * 5 / 9) + day14TempC + ((day15TempF - 32) * 5 / 9) + day16TempC + ((day17TempF - 32) * 5 / 9) + day18TempC + ((day19TempF - 32) * 5 / 9) + day20TempC + ((day21TempF - 32) * 5 / 9) + day22TempC + ((day23TempF - 32) * 5 / 9) + day24TempC + ((day25TempF - 32) * 5 / 9) + day26TempC + ((day27TempF - 32) * 5 / 9) + day28TempC + ((day29TempF - 32) * 5 / 9) + day30TempC
-
-const avg_temperature_in_fahrenheit = tot_temperature_in_fahrenheit / 30
-
-const avg_temperature_in_celsius = tot_temperature_in_celsius / 30
-
-module.exports = {
-// tot_temperature_in_fahrenheit,
-    // tot_temperature_in_celsius,
-    // avg_temperature_in_fahrenheit,
-    // avg_temperature_in_celsius
+    tot_temperature_in_fahrenheit,
+    tot_temperature_in_celsius,
+    avg_temperature_in_fahrenheit,
+    avg_temperature_in_celsius
 };
 
-console.log(tot_temperature_in_fahrenheit);
-console.log(tot_temperature_in_celsius);
-console.log(avg_temperature_in_fahrenheit);
-console.log(avg_temperature_in_celsius);
+// Optional: Run console.log for inspection
+console.log("Total Fahrenheit:", tot_temperature_in_fahrenheit);
+console.log("Total Celsius:", tot_temperature_in_celsius);
+console.log("Average Fahrenheit:", avg_temperature_in_fahrenheit);
+console.log("Average Celsius:", avg_temperature_in_celsius);
